@@ -19,6 +19,7 @@ Pythonフレームワーク Flaskで学ぶWebアプリケーションのしく�
 * Google Apps Script（以降、GASと呼びます。）
 * Google Spread Sheet（以降、ssと呼びます。）
 をメインで使用しました。
+pythonの実行環境はanacondaを使用していました。
 
 ### 全体概要
 全体概要を載せる。
@@ -39,6 +40,18 @@ Pythonフレームワーク Flaskで学ぶWebアプリケーションのしく�
 
 ### ビデオ議論
 ユーザー画面、derc.py、その他のツールで分けて説明を行います。derc.pyの範囲は、プログラム内部のデコレーターを記述しています。
-<img src="https://user-images.githubusercontent.com/91872741/154044962-8a6c9363-da4d-4cb7-850a-e3e3cdfd769d.png" width="500">
-<img src="https://user-images.githubusercontent.com/91872741/154044999-fe581370-abef-4141-9b22-c0229251d558.png" width="500">
-<img src="https://user-images.githubusercontent.com/91872741/154044521-799dd95f-2e1b-4d47-8a08-5827f7855ba7.png" width="500">
+実際には、図よりももう少し複雑な仕組みになっています。例えば、ユーザー画面の賭け画面を表示するには、ssからデータを取って来なければいけないのですが、そこまで詳しく書くと逆に見にくくなりますし、難しい記述ではないので、図には入れていません。このように多くを省きました。
+<img src="https://user-images.githubusercontent.com/91872741/154044962-8a6c9363-da4d-4cb7-850a-e3e3cdfd769d.png" width="400">
+<img src="https://user-images.githubusercontent.com/91872741/154044999-fe581370-abef-4141-9b22-c0229251d558.png" width="400">
+<img src="https://user-images.githubusercontent.com/91872741/154044521-799dd95f-2e1b-4d47-8a08-5827f7855ba7.png" width="400">
+
+### テキスト議論
+大まかな流れはビデオ議論と変わりませんが、評価の仕組みは大きく異なります。
+修士論文を見るとわかりますが、Slackで議論をして、そのログがリアルタイムでssに蓄積され、WEBアプリで見ることができるようになっています。
+写真をはる
+
+## 日常生活
+議論に比べるとすっきりした仕組みです。
+
+## 歩数
+設定がだいぶめんどくさいです。設定方法は
