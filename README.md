@@ -23,7 +23,9 @@ Pythonフレームワーク Flaskで学ぶWebアプリケーションのしく�
 ## 準備
 ・pythonの実行環境を整える。僕はpythonの実行環境はanacondaを使用していました。
 
-・GASの実行環境を整える。
+・GASの実行環境を整えるhttps://drive.google.com/drive/folders/1zCVqcMWUY0W2wT9kEX5VcTyeV3cTgOsD?usp=sharing。
+
+・ssを準備する。
 
 ・pythonファイルからGoogleSpreadSheetにアクセスするために、準備が必要です。
 https://tanuhack.com/operate-spreadsheet/
