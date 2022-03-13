@@ -1,0 +1,152 @@
+
+
+
+{% extends "layout.html" %}
+
+
+{% block title %}
+Login
+{% endblock %}
+
+
+{% block headline %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+{{ message }}</p>
+
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">
+          議論の設定
+        </h4>
+    </div>
+
+    <div class="card-body">
+      <form method="post" >
+
+        <div class="form-group">
+          <label for="odai">お題を入力してください。</label>
+          <input type="odai"  class="form-control" 
+              id="odai" name="odai" >
+        </div>
+
+        <font size ="+2">開始時刻を設定してください。</font>
+        <br>
+        <input type="date"  name="discussionstartdate">
+        <input type="time"  name="discussionstarttime">
+        <br>
+        <font size ="+2">終了時刻を設定してください。</font>
+        <br>
+        <input type="date"  name="discussionfinishdate">
+        <input type="time"  name="discussionfinishtime">
+        <br>
+        <input type="submit" value="送信">
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<title>My Application</title>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="alert alert-success">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<body>
+ <br><br><br>
+
+
+
+ <p class = "text-center">
+　 <font size ="+3">[{{ channel }}]にはDERCが設定されていません。</font><br>
+    <font size ="+3">あなたがホストになる場合、以下にご記入ください。</font>
+ </p>
+
+ <form method="post" >
+ <font size ="+2">開始時刻を設定してください。</font>
+ <br>
+ <input type="date"  name="discussionstartdate">
+ <input type="time"  name="discussionstarttime">
+ <br><br><br><br>
+ <font size ="+2">終了時刻を設定してください。</font>
+ <br>
+ <input type="date"  name="discussionfinishdate">
+ <input type="time"  name="discussionfinishtime">
+ <br>
+ <input type="submit" value="送信">
+ </form>
+
+</body>
+
+</html>
+
+-->

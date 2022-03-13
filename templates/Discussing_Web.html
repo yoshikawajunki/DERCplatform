@@ -1,0 +1,100 @@
+<meta http-equiv="refresh" content="20;url=webdiscuss">
+<!––自動更新機能––>
+
+
+{% extends "layout.html" %}
+
+
+{% block title %}
+{% endblock %}
+
+
+{% block headline %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+
+<!––もしaction=1（評価されていたら）普通とは違う画面を表示することで通知する。、action=0だったらう普通の画面で表
+––>
+
+{% if action == "0" %}
+<div class="card">
+  <div class="card-header">
+      <h4 class="card-title">
+          参加者一覧(「{{ channel }}」の終了時刻は{{ finishtime }}です。)
+      </h4>
+  </div>
+   <div class="card-body">  
+       {% for user in userlist %}
+            <font size="5"> 
+             {{user}}
+             <form method="post" action="/">
+             <div button type = "button" ><a href="/Discussing_Web2/{{user}}" class="btn-square-slant">評価</a></div>
+            </font>
+       {% endfor %}  
+   </div>
+</div>
+
+{% elif action == "1" %}
+<div class="card  bg-danger mb-3">
+  <div class="card bg-danger mb-3">
+    <div class="card-header">
+        <h4 class="card-title">
+            参加者一覧(「{{ channel }}」の終了時刻は{{ finishtime }}です。)
+        </h4>
+    </div>
+     <div class="card-body">  
+              <font size="5"> 
+                {{myname}}(自分)
+              </font>
+              <br>
+         {% for user in userlist %}
+              <font size="5"> 
+               {{user}}
+               <form method="post" action="/">
+               <div button type = "button" ><a href="/Discussing_Web2/{{user}}" class="btn-square-slant">評価</a></div>
+              </font>
+         {% endfor %}  
+     </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+
+<br>
+
+{% block content2 %}
+<div class="card text-white bg-info mb-3" >
+  <div class="card-header">
+      <h4 class="card-title">
+          評価されたタイミング
+      </h4>
+  </div>
+   <div class="card-body">  
+       {% for hyouka in hyoukalist %}
+         <font size="5"> 
+             {{hyouka}}<br>
+         </font>
+       {% endfor %}  
+   </div>
+</div>
+
+
+<div class="card text-white bg-secondary mb-3" >
+    <div class="card-header">
+        <h4 class="card-title">
+            議論終了時間を変更しますか？
+        </h4>
+    </div>
+     <div class="card-body">  
+        議論終了時間を変更する場合は議論を行っている人全員の了承を得てからにしてください。
+         <form method="post" action="/">
+            <div button type = "button" ><a href="/Discussing_web_change/{{channel}}" class="btn-square-emboss">変更する。</a></div>
+     </div>
+  </div>
+
+
+{% endblock %}
+

@@ -1,0 +1,57 @@
+
+
+
+{% extends "layout.html" %}
+
+
+{% block title %}
+Login
+{% endblock %}
+
+
+{% block headline %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+
+{{ message }}</p>
+
+
+<div class="card">
+    <div class="card-header">
+      <table border="1">
+        <tr>
+          <th>チャンネル名</th>
+          <th>{{channel}}</th>
+        </tr>
+        <tr>
+          <td>賭けポイント</th>
+          <td>{{kakepoint}}</th>
+        </tr>
+        <tr>
+          <td>賭けた相手</td>
+          <td>{{kakeaite}}</td>
+        </tr>
+        <tr>
+          <td>成功/失敗</td>
+          <td>{{seikousippai}}</td>
+        </tr>
+        <tr>
+          <td>レベル1の批評価ポイント</td>
+          <td>{{hihyoukapoint1}}</td>
+        </tr>
+        <tr>
+          <td>レベル2の変動ポイント（+/-）</td>
+          <td>{{hihyoukapoint2}}</td>
+        </tr>
+        <tr>
+          <td>ポイントの変動（+/-）</td>
+          <td>{{sougoupoint}}</td>
+        </tr>
+      </table>
+    </div>
+</div>
+
+{% endblock %}

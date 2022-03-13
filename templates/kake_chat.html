@@ -1,0 +1,76 @@
+
+
+
+{% extends "layout.html" %}
+
+
+{% block title %}
+Login
+{% endblock %}
+
+
+{% block headline %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+{{ message }}</p>
+
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">
+          かける相手を選択してください。<br>
+          あなたのポイントは{{point}}で{{kakepointlow}}~{{kakepointhigh}}ポイントまで賭ける事ができます。
+        </h4>
+    </div>
+    <div class="card-body">
+      {% for date in kakezyouhou%}
+      <table border="1" style="table-layout:fixed;">
+        <tr>
+          <th style="width:150px;">{{date[0]}}</th>
+          <th style="width:150px;">{{date[1]}}</th>
+        </tr>
+      </table>
+      {% endfor %}
+      <br>
+
+      誰にかけますか？
+      <form method="post" >
+        <select name="kakeperson">
+          <option value="null" disabled selected>選択して下さい</option>
+          {% for date in kakezyouhou%}
+          <option value={{date[0]}}>{{date[0]}}</option>
+          {% endfor %}
+        </select>
+        <br><br>
+      どのくらいかけますか？
+      <br>
+        <select name="kakepoint">
+          <option value="null" disabled selected>選択して下さい</option>
+          {% for kake in range(kakesuu) %}
+          <option value={{kakerange[kake]}}>{{kakerange[kake]}}</option>
+          {% endfor %}
+        </select>
+
+        <div>
+          <input type="submit" value="送信">
+        </div>
+      </form>
+
+    </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+      <h4 class="card-title">
+        [{{ channel }}]{{arinasi}}({{start}}~{{finish}})
+      </h4>
+  </div>
+
+  <div class="card-body">
+  　　<div button type = "button" ><a href="/settingchat">変更する</a></div>
+  </div>
+</div>
+{% endblock %}

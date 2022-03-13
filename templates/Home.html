@@ -1,0 +1,758 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block headline %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+
+{{ message }}</p>
+
+
+        <div>
+            <font size ="+2">           
+            You have {{ points }}points
+            <br>
+            明日は15%引いた{{tomorrowpoints}}pointsになります
+        　　</font>
+        </div>
+        <br>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">
+                利他行為を受けましたか？
+            </h4>
+        </div>
+        <div class="card-body">
+        <font size ="+1">
+            
+            <form method="post" >
+                <select name="ritaperson">
+                  <option value="null" disabled selected>誰から受けましたか？</option>
+                  {% for data in persons%}
+                  <option value={{data[0]}}>{{data[0]}}</option>
+                  {% endfor %}
+                </select>
+                <br><br>
+               
+                どんな利他行為を受けましたか？（分析に使用します）
+                <input type="text"  class="form-control" 
+                    id="id" name="message" >
+               
+        
+                <div>
+                  <input type="submit" value="送信">
+                </div>
+              </form>
+
+
+        </font>
+        </div>
+        
+    </div>
+  <br>
+    <div class="card">
+        <div class="card-body">
+        <font size ="+2">
+            ・
+            <class = "logout" ><a href="/discussHome">議論を始める</a>
+       
+         <br>
+           ・
+            <class = "logout" ><a href="/hosuu">歩数のかけを行う</a>
+
+        <br>
+           ・
+            <class = "logout" ><a href="/rita">利他行為のかけを行う</a>
+       
+         <br>
+      
+            ・
+            <class = "logout" ><a href="/point_history">ポイントの変遷を見る</a>
+        </font>
+        </div>
+        
+    </div>
+
+    <br>
+
+    <div class="card">
+        <div class="card-body">
+          <font size ="+2">
+              ユーザー全体のポイント履歴（太い線があなたです。）
+          
+              <br>
+              <img src="/static/images/graph_{{name}}.png" alt="graph"/>
+              <br>
+              バッヂ一覧
+          </font>
+          <font size ="+1">
+              <table border="1" width=100%><!--全体ポイント分テーブル始まり-->
+                <br>
+                全体ポイント
+                {% if zentai =="nasi" %}<!--一段目-->
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>全体ポイント1</th>
+                    <th>全体ポイント2</th>
+                    <th>全体ポイント3</th>
+                    </tr>
+
+                {% elif zentai =="3000" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/zentai_3000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>3000Pt獲得！</th>
+                    <th>全体ポイント2</th>
+                    <th>全体ポイント3</th>
+                    </tr>
+
+                {% elif zentai =="6000" %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/zentai_3000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/zentai_6000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>3000Pt獲得！</th>
+                    <th>6000Pt獲得！</th>
+                    <th>全体ポイント3</th>
+                    </tr>
+
+                {% else %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/zentai_3000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/zentai_6000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/zentai_10000.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>3000Pt獲得！</th>
+                    <th>6000Pt獲得！</th>
+                    <th>10000Pt獲得！</th>
+                    </tr>
+                {% endif %}<!--一段目終わり-->
+
+
+
+                {% if zentai =="nasi" or zentai =="3000" or zentai =="6000" or zentai =="10000" %}<!--二段目-->
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>全体ポイント4</th>
+                    <th>全体ポイント5</th>
+                    <th>全体ポイント6</th>
+                    </tr>
+
+                {% elif zentai =="15000" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/zentai_15000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>15000Pt獲得！</th>
+                    <th>全体ポイント5</th>
+                    <th>全体ポイント6</th>
+                    </tr>
+
+                {% elif zentai =="20000" %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/zentai_15000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/zentai_20000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>15000Pt獲得！</th>
+                    <th>20000Pt獲得！</th>
+                    <th>全体ポイント3</th>
+                    </tr>
+
+                {% else %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/zentai_15000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/zentai_20000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/zentai_30000.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>15000Pt獲得！</th>
+                    <th>20000Pt獲得！</th>
+                    <th>30000Pt獲得！</th>
+                    </tr>
+                {% endif %}<!--二段目終わり-->
+
+                {% if zentai =="40000" %}<!--三段目-->
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/zentai_40000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>40000Pt獲得！</th>
+                    <th>全体ポイント8</th>
+                    <th>全体ポイント9</th>
+                    </tr>
+                    
+
+                {% elif zentai =="50000" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/zentai_40000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/zentai_50000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>4000Pt獲得！</th>
+                    <th>5000Pt獲得！</th>
+                    <th>全体ポイント9</th>
+                    </tr>
+
+                {% elif zentai =="60000" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/zentai_40000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/zentai_50000.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/zentai_60000.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>4000Pt獲得！</th>
+                    <th>5000Pt獲得！</th>
+                    <th>6000Pt獲得！</th>
+                    </tr>
+
+                {% else %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>全体ポイント7</th>
+                    <th>全体ポイント8</th>
+                    <th>全体ポイント9</th>
+                    </tr>  
+                {% endif %}<!--三段目終わり-->       
+              </table><!--全体ポイント分テーブル終わり-->
+
+
+
+
+
+
+
+
+
+
+              <table border="1" width=100%><!--議論ポイント分テーブル始まり-->
+                <br>
+                議論全体ポイント
+                {% if discuss =="nasi" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>議論ポイント1</th>
+                    <th>議論ポイント2</th>
+                    <th>議論ポイント3</th>
+                    </tr>
+
+                {% elif discuss =="dou" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/discuss_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>議論ポイント2</th>
+                    <th>議論ポイント3</th>
+                    </tr>
+
+                {% elif discuss =="gin" %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/discuss_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/discuss_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>議論ポイント3</th>
+                    </tr>
+
+                {% else %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/discuss_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/discuss_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/discuss_kin.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>金獲得！</th>
+                    </tr>
+                {% endif %}
+              </table><!--議論ポイント分テーブル終わり-->
+
+
+
+              <table border="1" width=100%><!--議論Lv1ポイント分テーブル始まり-->
+                <br>
+                議論LV1ポイント
+                {% if discussLv1 =="nasi" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>議論LV1ポイント1</th>
+                    <th>議論LV1ポイント2</th>
+                    <th>議論LV1ポイント3</th>
+                    </tr>
+
+                {% elif discussLv1 =="dou" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/discuss1_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>議論LV1ポイント2</th>
+                    <th>議論LV1ポイント3</th>
+                    </tr>
+
+                {% elif discussLv1 =="gin" %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/discuss1_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/discuss1_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>議論LV1ポイント3</th>
+                    </tr>
+
+                {% else %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/discuss1_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/discuss1_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/discuss1_kin.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>金獲得！</th>
+                    </tr>
+                {% endif %}
+              </table><!--議論LV1ポイント分テーブル終わり-->
+
+
+              <table border="1" width=100%><!--議論Lv2ポイント分テーブル始まり-->
+                <br>
+                議論LV2ポイント
+                {% if discussLv2 =="nasi" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>議論LV2ポイント1</th>
+                    <th>議論LV2ポイント2</th>
+                    <th>議論LV2ポイント3</th>
+                    </tr>
+
+                {% elif discussLv2 =="dou" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/discuss2_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>議論LV2ポイント2</th>
+                    <th>議論LV2ポイント3</th>
+                    </tr>
+
+                {% elif discussLv2 =="gin" %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/discuss2_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/discuss2_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>議論LV2ポイント3</th>
+                    </tr>
+
+                {% else %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/discuss2_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/discuss2_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/discuss2_kin.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>金獲得！</th>
+                    </tr>
+                {% endif %}
+              </table><!--議論LV2ポイント分テーブル終わり-->
+
+
+
+              <table border="1" width=100%><!--歩数全体ポイント分テーブル始まり-->
+                <br>
+                歩数全体ポイント
+                {% if hosuu =="nasi" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>歩数全体ポイント1</th>
+                    <th>歩数全体ポイント2</th>
+                    <th>歩数全体ポイント3</th>
+                    </tr>
+
+                {% elif hosuu =="dou" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hosuu_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>歩数全体ポイント2</th>
+                    <th>歩数全体ポイント3</th>
+                    </tr>
+
+                {% elif hosuu =="gin" %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/hosuu_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hosuu_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>歩数全体ポイント3</th>
+                    </tr>
+
+                {% else %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/hosuu_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hosuu_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hosuu_kin.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>金獲得！</th>
+                    </tr>
+                {% endif %}
+              </table><!--歩数全体ポイント分テーブル終わり-->
+
+
+              <table border="1" width=100%><!--歩数LV1ポイント分テーブル始まり-->
+                <br>
+                歩数LV1ポイント
+                {% if hosuuLv1 =="nasi" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>歩数LV1ポイント1</th>
+                    <th>歩数LV1ポイント2</th>
+                    <th>歩数LV1ポイント3</th>
+                    </tr>
+
+                {% elif hosuuLv1 =="dou" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hosuu_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>歩数LV1ポイント2</th>
+                    <th>歩数LV1ポイント3</th>
+                    </tr>
+
+                {% elif hosuuLv1 =="gin" %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/hosuu1_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hosuu1_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>歩数LV1ポイント3</th>
+                    </tr>
+
+                {% else %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/hosuu1_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hosuu1_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hosuu1_kin.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>金獲得！</th>
+                    </tr>
+                {% endif %}
+              </table><!--歩数LV1ポイント分テーブル終わり-->
+
+
+              <table border="1" width=100%><!--歩数LV2ポイント分テーブル始まり-->
+                <br>
+                歩数LV2全体ポイント
+                {% if hosuuLv2 =="nasi" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>歩数LV2ポイント1</th>
+                    <th>歩数LV2ポイント2</th>
+                    <th>歩数LV2ポイント3</th>
+                    </tr>
+
+                {% elif hosuuLv2 =="dou" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hosuu2_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>歩数LV2ポイント2</th>
+                    <th>歩数LV2ポイント3</th>
+                    </tr>
+
+                {% elif hosuuLv2 =="gin" %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/hosuu2_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hosuu2_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>歩数LV2ポイント3</th>
+                    </tr>
+
+                {% else %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/hosuu2_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hosuu2_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hosuu2_kin.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>金獲得！</th>
+                    </tr>
+                {% endif %}
+              </table><!--歩数LV2ポイント分テーブル終わり-->
+
+
+              <table border="1" width=100%><!--利他行為全体ポイント分テーブル始まり-->
+                <br>
+                利他行為全体ポイント
+                {% if ritakoui =="nasi" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>利他行為全体ポイント1</th>
+                    <th>利他行為全体ポイント2</th>
+                    <th>利他行為全体ポイント3</th>
+                    </tr>
+
+                {% elif ritakoui =="dou" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/ritakoui_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>利他行為全体ポイント2</th>
+                    <th>利他行為全体ポイント3</th>
+                    </tr>
+
+                {% elif ritakoui =="gin" %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/ritakoui_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/ritakoui_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>利他行為全体ポイント3</th>
+                    </tr>
+
+                {% else %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/ritakoui_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/ritakoui_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/ritakoui_kin.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>金獲得！</th>
+                    </tr>
+                {% endif %}
+              </table><!--利他行為全体ポイント分テーブル終わり-->
+
+
+
+              <table border="1" width=100%><!--利他行為LV1ポイント分テーブル始まり-->
+                <br>
+                利他行為LV1全体ポイント
+                {% if ritakouiLv1 =="nasi" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>利他行為LV1ポイント1</th>
+                    <th>利他行為LV1ポイント2</th>
+                    <th>利他行為LV1ポイント3</th>
+                    </tr>
+
+                {% elif ritakouiLv1 =="dou" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/ritakoui1_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>利他行為LV1ポイント2</th>
+                    <th>利他行為LV1ポイント3</th>
+                    </tr>
+
+                {% elif ritakouiLv1 =="gin" %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/ritakoui1_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/ritakoui1_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>利他行為LV1ポイント3</th>
+                    </tr>
+
+                {% else %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/ritakoui1_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/ritakoui1_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/ritakoui1_kin.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>金獲得！</th>
+                    </tr>
+                {% endif %}
+              </table><!--利他行為LV1ポイント分テーブル終わり-->
+
+
+              <table border="1" width=100%><!--利他行為LV2ポイント分テーブル始まり-->
+                <br>
+                利他行為LV2全体ポイント
+                {% if ritakouiLv2 =="nasi" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>利他行為LV2ポイント1</th>
+                    <th>利他行為LV2ポイント2</th>
+                    <th>利他行為LV2ポイント3</th>
+                    </tr>
+
+                {% elif ritakouiLv2 =="dou" %}
+                    <tr>
+                    <th><img src="/static/Badge/jpeg/ritakoui2_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>利他行為LV2ポイント2</th>
+                    <th>利他行為LV2ポイント3</th>
+                    </tr>
+
+                {% elif ritakouiLv2 =="gin" %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/ritakoui2_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/ritakoui2_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/hatena.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>利他行為LV2ポイント3</th>
+                    </tr>
+
+                {% else %}
+                    <tr>    
+                    <th><img src="/static/Badge/jpeg/ritakoui2_dou.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/ritakoui2_gin.jpeg" title="hatena" width=100% /></th>
+                    <th><img src="/static/Badge/jpeg/ritakoui2_kin.jpeg" title="hatena" width=100% /></th>
+                    </tr>
+                    <tr>
+                    <th>銅獲得！</th>
+                    <th>銀獲得！</th>
+                    <th>金獲得！</th>
+                    </tr>
+                {% endif %}
+              </table><!--利他行為LV2ポイント分テーブル終わり-->
+
+
+            </font>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+

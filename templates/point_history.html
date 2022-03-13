@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+{% endblock %}
+
+
+{% block headline %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+{{ message }}</p>
+
+
+<table border="1" width="200">
+    {% for rireki in pointsrireki%}
+    <tr>
+      <th>{{rireki[0]}}</th>
+      <th>{{rireki[1]}}</th>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,196 @@
+
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8"/>
+    <style type="text/css">
+        .p1 {
+            background-color: #f5f5f5;
+        }
+        .p2 {
+            background-color: #e4e3f3;
+        }
+        .p3 {
+            background-color: #c4bfe9;
+        }
+        .p4 {
+            background-color: #8477e9;
+        }
+        .p5 {
+            background-color: #bfdac3;
+        }
+        .p6 {
+            background-color: #9bdca5;
+        }
+        .p7 {
+            background-color: #6fdc80;
+        }
+        .p8 {
+            background-color: #e6a09b;
+        }
+
+    </style>
+    <meta name="viewport" 
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"d></script>
+
+
+</head>
+<body>
+
+    
+    <label class="btn btn-light" formcontrol >
+        <a href="/">Home</a>
+      </label>
+    
+      <label class="btn btn-light" width:33%>
+        <a href="/Channelselection_Chat">チャット議論チャンネル選択</a>
+      </label>
+    
+      <label class="btn btn-light" width:33%>
+        <a href="/Channelselection_web">web議論チャンネル選択</a>
+      </label>
+    
+      <label class="btn btn-light" width:33%>
+        <a href="/hosuu">歩数関連Home</a>
+      </label>
+
+      <label class="btn btn-light" width:33%>
+        <a href="/rita">利他行為賭け</a>
+      </label>
+      
+      <label class="btn btn-light" width:33%>
+        <a href="/logout">ログアウト</a>
+      </label>
+      
+      <div class="alert alert-success" role="alert">
+           <font size ="+2">
+             {{name}}さん
+           </font> 
+      </div>
+    
+
+
+
+
+    <div  class="container">
+        <h1 class="display-4 mb-4">
+            {{ title }}
+            <br>
+            (終了時刻は{{ finishtime }}です。)
+        </h1>
+    </div>
+
+
+    <div class="card text-white bg-secondary mb-3" >
+    　　<div class="card-header">
+            <h4 class="card-title">
+                議論終了時間を変更しますか？
+            </h4>
+        </div>
+         <div class="card-body">  
+            議論終了時間を変更する場合は議論を行っている人全員の了承を得てからにしてください。
+             <form method="post" action="/">
+                <div button type = "button" ><a href="/Discussing_chat_change/{{channel}}" class="btn-square-emboss">変更する。</a></div>
+         </div>
+    </div>
+
+        <div>
+            {% for item in data%}
+            <div  class="card">
+                <li>
+                    {% if item[4]=="tanin" %}
+                    <p class = "p1">
+                        <font size="4">{{item[2]}}</font>
+                        <font size="2"> ({{item[1]}})</font>
+                        <br>
+                        <font size ="3">{{item[0]}}</font>
+                        <form method="post" action="/">
+                            <font size="5">
+                             <div button type = "button" ><a href="/hyouka/{{item[3]}}">評価</a></div>
+                            </font>
+                        </form>
+                    </p>
+
+                    {% elif item[4]=="0" %}
+                    <p class = "p2">
+                        <font size="4">{{item[2]}}</font>
+                        <font size="2"> ({{item[1]}})</font>
+                        <font size="2"> 被評価回数:0回</font>
+                        <br>
+                        <font size ="3">{{item[0]}}</font>
+                        <form method="post" action="/">
+                    </p>
+
+                    {% elif item[4]=="1" %}
+                    <p class = "p3">
+                        <font size="4">{{item[2]}}</font>
+                        <font size="2"> ({{item[1]}})</font>
+                        <font size="2"> 被評価回数:1回</font>
+                        <br>
+                        <font size ="3">{{item[0]}}</font>
+                        <form method="post" action="/">
+                    </p>
+
+                    {% elif item[4]=="2" %}
+                    <p class = "p4">
+                        <font size="4">{{item[2]}}</font>
+                        <font size="2"> ({{item[1]}})</font>
+                        <font size="2"> 被評価回数:2回</font>
+                        <br>
+                        <font size ="3">{{item[0]}}</font>
+                    </p>
+
+                    {% elif item[4]=="3" %}
+                    <p class = "p5">
+                        <font size="4">{{item[2]}}</font>
+                        <font size="2"> ({{item[1]}})</font>
+                        <font size="2"> 被評価回数:3回</font>
+                        <br>
+                        <font size ="3">{{item[0]}}</font>
+                    </p>
+
+                    {% elif item[4]=="4" %}
+                    <p class = "p6">
+                        <font size="4">{{item[2]}}</font>
+                        <font size="2"> ({{item[1]}})</font>
+                        <font size="2"> 被評価回数:4回</font>
+                        <br>
+                    </p>
+
+                    {% elif item[4]=="5" %}
+                    <p class = "p7">
+                        <font size="4">{{item[2]}}</font>
+                        <font size="2"> ({{item[1]}})</font>
+                        <font size="2"> 被評価回数:5回</font>
+                        <br>
+                        <font size ="3">{{item[0]}}</font>
+                    </p>
+
+                    {% else %}
+                    <p class = "p8">
+                        <font size="4">{{item[2]}}</font>
+                        <font size="2"> ({{item[1]}})</font>    
+                        <font size="2"> 被評価回数:{{item[4]}}回</font>  
+                        <br>
+                        <font size ="3">{{item[0]}}</font>         
+                    </p>
+                    {% endif %}
+
+                </li>
+            </div>
+            {% endfor %}
+        </div>
+       
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+

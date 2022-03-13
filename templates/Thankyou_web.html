@@ -1,0 +1,47 @@
+
+{% extends "layout.html" %}
+
+
+{% block title %}
+Login
+{% endblock %}
+
+
+{% block headline %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+{{ message }}</p>
+
+<font size ="+2">[{{channel}}]には</font>
+<br>
+<font size ="+3">{{starttime}}</font>
+<br>
+<font size ="+2">から</font>
+<br>
+<font size ="+2">議論が設定されています。</font>
+<br><br><br>
+
+<font size ="+2">
+あなたは({{kakeperson}})に{{kakepoint}}点賭けています。
+</font>
+
+<br><br><br>
+
+<font size="6">
+  <div button type = "button" ><a href="/kake_web">賭ける/賭けなおす</a></div>
+</font>
+ <br>
+
+<font size ="+2">
+議論開始後に議論のステータスが（DERCでの議論進行中）になったらチャンネル選択画面から議論画面に進んでください。
+</font>
+
+
+{% endblock %}
+
+
+
+

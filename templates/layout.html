@@ -1,0 +1,127 @@
+<!--リスト3-26――layout.html-->
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" 
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"d></script>
+
+
+</head>
+<body>
+  <div style="background-color: #EDF7FF;">
+    <div  class="container">
+        <p>
+            {% block header %}
+            
+            <label class="btn btn-light" formcontrol >
+                <a href="/">Home</a>
+              </label>
+            
+              <label class="btn btn-light" width:33%>
+                <a href="/Channelselection_Chat">チャット議論チャンネル選択</a>
+              </label>
+            
+              <label class="btn btn-light" width:33%>
+                <a href="/Channelselection_web">オンライン議論チャンネル選択</a>
+              </label>
+
+              <label class="btn btn-light" width:33%>
+                <a href="/hosuu">歩数関連Home</a>
+              </label>
+
+              <label class="btn btn-light" width:33%>
+                <a href="/rita">利他行為賭け</a>
+              </label>
+            
+              <label class="btn btn-light" width:33%>
+                <a href="/logout">ログアウト</a>
+              </label>
+              
+              <div class="alert alert-light" role="alert">
+   
+                   <font size ="+2">
+                     <b>
+                        {{name}}さん
+                     </b>
+                   </font> 
+                   {% if zentai =="nasi" %}
+                   {% else %}
+                  <img src="/static/Badge/jpeg/zentai_{{zentai}}.jpeg" title="zentai" width="60" height="60"/>
+                   {% endif %}
+
+                   {% if discuss =="nasi" %}
+                   {% else %}
+                  <img src="/static/Badge/jpeg/discuss_{{discuss}}.jpeg" title="discuss" width="60" height="60"/>
+                   {% endif %}
+
+                   {% if discussLv1 =="nasi" %}
+                   {% else %}
+                  <img src="/static/Badge/jpeg/discuss1_{{discussLv1}}.jpeg" title="discussLv1" width="60" height="60"/>
+                   {% endif %}
+
+                   {% if discussLv2 =="nasi" %}
+                   {% else %}
+                  <img src="/static/Badge/jpeg/discuss2_{{discussLv2}}.jpeg" title="discussLv2" width="60" height="60"/>
+                   {% endif %}
+
+                   {% if hosuu =="nasi" %}
+                   {% else %}
+                  <img src="/static/Badge/jpeg/hosuu_{{hosuu}}.jpeg" title="hosuu" width="60" height="60"/>
+                   {% endif %}
+
+                   {% if hosuuLv1 =="nasi" %}
+                   {% else %}
+                  <img src="/static/Badge/jpeg/hosuu1_{{hosuuLv1}}.jpeg" title="hosuuLv1" width="60" height="60"/>
+                   {% endif %}
+
+                   {% if hosuuLv2 =="nasi" %}
+                   {% else %}
+                  <img src="/static/Badge/jpeg/hosuu2_{{hosuuLv2}}.jpeg" title="hosuuLv2" width="60" height="60"/>
+                   {% endif %}
+
+                   {% if ritakoui =="nasi" %}
+                   {% else %}
+                  <img src="/static/Badge/jpeg/ritakoui_{{ritakoui}}.jpeg" title="ritakoui" width="60" height="60"/>
+                   {% endif %}
+
+                   {% if ritakouiLv1 =="nasi" %}
+                   {% else %}
+                  <img src="/static/Badge/jpeg/ritakoui1_{{ritakouiLv1}}.jpeg" title="ritakouiLv1" width="60" height="60"/>
+                   {% endif %}
+
+                   {% if ritakouiLv2 =="nasi" %}
+                   {% else %}
+                  <img src="/static/Badge/jpeg/ritakoui2_{{ritakouiLv2}}.jpeg" title="ritakouiLv2" width="60" height="60"/>
+                   {% endif %}
+
+
+                 
+              </div>
+            
+            {% endblock %}
+        </p>
+        <h1 class="display-4 mb-4" >
+            {% block headline %}{% endblock %}
+        </h1>
+        <p>
+            {% block content %}{% endblock %}
+        </p>
+        <div>
+            {% block content2 %}{% endblock %}
+        </div>
+        <div class="text-right mt-3">
+            {% block footer %}{% endblock %}
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+</body>
+</html>

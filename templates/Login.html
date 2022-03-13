@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% endblock %}
+
+
+{% block title %}
+Login
+{% endblock %}
+
+
+{% block headline %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+{{ message }}</p>
+
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">
+            Login form:
+        </h4>
+    </div>
+    <div class="card-body">
+        <form method="post" aciton="/login">
+        <div class="form-group">
+            <label for="name">name</label>
+            <input type="text"  class="form-control" 
+                id="id" name="name" >
+            <small class="form-text text-muted">
+                名前を入力
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="pass">password</label>
+            <input type="password"  class="form-control" 
+                id="pass" name="pass">
+            <small class="form-text text-muted">
+                パスワードを入力
+            </small>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Login">
+        </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+

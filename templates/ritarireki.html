@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+{% endblock %}
+
+
+{% block headline %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+{{ message }}</p>
+
+
+<table border="1" width="800">
+    {% for rireki in rita%}
+    <tr>
+      <th>{{rireki[0]}}</th>
+      <th>{{rireki[1]}}</th>
+      <th>{{rireki[2]}}</th>
+      <th>{{rireki[3]}}</th>
+      <th>{{rireki[4]}}</th>
+      <th>{{rireki[5]}}</th>
+      <th>{{rireki[6]}}</th>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

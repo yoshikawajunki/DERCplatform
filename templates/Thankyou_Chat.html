@@ -1,0 +1,65 @@
+
+{% extends "layout.html" %}
+
+
+{% block title %}
+Login
+{% endblock %}
+
+
+{% block headline %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+{{ message }}</p>
+
+<font size ="+2">[{{channel}}]には</font>
+<br>
+<font size ="+3">{{starttime}}</font>
+<br>
+<font size ="+2">から</font>
+<br>
+<font size ="+3">{{finishtime}}</font>
+<br>
+<font size ="+2">までの</font>
+<font size ="+2">議論が設定されています。</font>
+<br><br><br>
+
+<font size ="+2">
+  
+
+<p>あなたは({{kakeperson}})に({{kakepoint}})点賭けています。</p>
+
+
+<br>
+
+<font size="+2">
+  <div button type = "button" ><a href="/kake_chat">賭ける/賭けなおす</a></div>
+
+
+
+ <br>
+
+ <div class="card">
+  <div class="card-header">
+      <h4 class="card-title">
+        議論参加の流れ
+      </h4>
+  </div>
+
+  <div class="card-body">
+    ・slackで[discussionstart]と流れた後に、 <div button type = "button" ><a href="/ChannelSetting_Chat/{{channel}}">このボタン</div><a></a>
+    を押す。
+
+    <br><br>
+    ・「チャット議論選択ページ」→「{{channel}}」で議論に進んでください。
+
+  </div>
+</div>
+
+{% endblock %}
+
+
+
