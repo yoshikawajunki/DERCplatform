@@ -26,8 +26,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
 #認証情報設定
-#ダウンロードしたjsonファイル名をクレデンシャル変数に設定（秘密鍵、Pythonファイルから読み込みしやすい位置に置く）
-credentials = ServiceAccountCredentials.from_json_keyfile_name('renkei_spreadsheet.json', scope)
+#ダウンロードしたjsonファイルを secret_key.json の名前で配置
+credentials = ServiceAccountCredentials.from_json_keyfile_name('secret_key.json', scope)
 
 #OAuth2の資格情報を使用してGoogle APIにログインします。
 gc = gspread.authorize(credentials)
