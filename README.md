@@ -21,15 +21,15 @@ Pythonフレームワーク Flaskで学ぶWebアプリケーションのしく�
 をメインで使用しました。
 
 ## 環境構築
-- Python
+#### Python
 Python(3.8.1)の実行環境を構築し、`pip install -r requirements.txt`  を実行して依存パッケージをダウンロードする
 
-・GASの実行環境を整えるhttps://drive.google.com/drive/folders/1zCVqcMWUY0W2wT9kEX5VcTyeV3cTgOsD?usp=sharing。
+#### GASの実行環境を整えるhttps://drive.google.com/drive/folders/1zCVqcMWUY0W2wT9kEX5VcTyeV3cTgOsD?usp=sharing。
 
-- SSの準備
+#### SSの準備
 [https://drive.google.com/drive/folders/1VkuDIBmyC0hpdkgsLxQAsRJCBlKygicK] 以下の5つのスプレッドシートを自分の管理するGoogleDriveにコピーしておく
 
-- PythonからGoogleSpreadSheetにアクセスするための準備
+#### PythonからGoogleSpreadSheetにアクセスするための準備
 参考: [https://tanuhack.com/operate-spreadsheet/]
 
 上のリンクを参考に以下の作業を行う
@@ -40,11 +40,11 @@ Python(3.8.1)の実行環境を構築し、`pip install -r requirements.txt`  �
     - 「サービスアカウント」からJSON形式で鍵を作成し、自分のPCにダウンロードしておく
 - 上で用意した5つのスプレッドシートの共有フォームから、作成した鍵の中にあるメールアドレスを編集者として送信
 
-- PythonとSlackを連携させるための準備
+#### PythonとSlackを連携させるための準備
 https://blog.imind.jp/entry/2020/03/07/231631
 こちらのページを参考に準備する。Slackに投稿するためのbotを作成し、tokenを取得するところまで
 
-- DB Browser for SQLiteをインストール（https://sqlitebrowser.org/）
+#### DB Browser for SQLiteをインストール（https://sqlitebrowser.org/）
 
 
 ## 実行する際の準備
