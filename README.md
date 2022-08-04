@@ -20,21 +20,53 @@ Pythonフレームワーク Flaskで学ぶWebアプリケーションのしく�
 * Google Spread Sheet（以降、ssと呼びます。）
 をメインで使用しました。
 
-## 準備
-・pythonの実行環境を整える。僕はpythonの実行環境はanacondaを使用していました。
+## 環境構築
+- Python
+Python(3.8.1)の実行環境を構築し、`pip install -r requirements.txt`  を実行して依存パッケージをダウンロードする
 
 ・GASの実行環境を整えるhttps://drive.google.com/drive/folders/1zCVqcMWUY0W2wT9kEX5VcTyeV3cTgOsD?usp=sharing。
 
-・ssを準備する。
+- SSの準備
+[https://drive.google.com/drive/folders/1VkuDIBmyC0hpdkgsLxQAsRJCBlKygicK] 以下の5つのスプレッドシートを自分の管理するGoogleDriveにコピーしておく
 
-・pythonファイルからGoogleSpreadSheetにアクセスするために、準備が必要です。
-https://tanuhack.com/operate-spreadsheet/
+- PythonからGoogleSpreadSheetにアクセスするための準備
+参考: [https://tanuhack.com/operate-spreadsheet/]
 
-・pythonファイルからSlackに投稿するために、準備が必要です。
+上のリンクを参考に以下の作業を行う
+- アプリの作成
+    - Google Drive APIの有効化
+    - Google Sheets APIの有効化
+- クレデンシャル情報の作成
+    - 「サービスアカウント」からJSON形式で鍵を作成し、自分のPCにダウンロードしておく
+- 上で用意した5つのスプレッドシートの共有フォームから、作成した鍵の中にあるメールアドレスを編集者として送信
+
+- PythonとSlackを連携させるための準備
 https://blog.imind.jp/entry/2020/03/07/231631
+こちらのページを参考に準備する。Slackに投稿するためのbotを作成し、tokenを取得するところまで
 
-・DB Browser for SQLiteをインストール（https://sqlitebrowser.org/）
+- DB Browser for SQLiteをインストール（https://sqlitebrowser.org/）
 
+
+## 実行する際の準備
+### クレデンシャル情報の配置と読み込み
+
+上記「PythonからGoogleSpreadSheetにアクセスするための準備」で作成したクレデンシャル鍵を `secret_key.json` と名前を付けてderc.pyと同じ階層のディレクトリに配置
+
+### スプレッドシートのID設定
+`[derc.py](http://derc.py)` 中にssのIDを記述する
+コード内に、自分がコピーしたスプレッドシートのID(URL内の/d/以下の部分)を直書きする.
+
+- SPREADSHEET_KEY_DB: ポイント管理+テキスト議論
+- SPREADSHEET_KEY_slacklog_EvnetAPI: テキスト議論ログ倉庫
+- SPREADSHEET_webdiscuss: ビデオ議論
+- SPREADSHEET_hosuukeisan: ヘルスケア(歩数)
+- SPREADSHEET_rita: 日常生活
+
+### Slackのtoken設定
+コード内に多数あるtoken指定部分すべてにtokenを指定(”Slackの連携の設定”で作成したslackbotのトークン)する。
+
+### 実行
+derc.pyを実行するとサーバが立ち上がるのでURLにアクセスする
 
 ### 全体概要
 DERCプラットフォームは議論（ビデオ議論・テキスト議論）、日常生活、ヘルスケアの3つのアクティビティから構成されています。
